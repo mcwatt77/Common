@@ -1,4 +1,4 @@
-﻿Namespace My.Collections
+﻿Namespace Collections
 
     Public Class Node
 
@@ -10,11 +10,11 @@
         End Sub
 
         Public Sub Increment(Optional ByVal amount As Integer = 1)
-            _count += amount
+            _Count += amount
         End Sub
 
         Public Sub Decrement(Optional ByVal amount As Integer = 1)
-            _count -= amount
+            _Count -= amount
         End Sub
 
     End Class

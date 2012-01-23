@@ -8,7 +8,7 @@
     <ProjectGuid>{9BB4E144-7646-4583-B4BB-C7E3709C1EBF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Common_cs</RootNamespace>
+    <RootNamespace>MyCS</RootNamespace>
     <AssemblyName>Common_cs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -9,7 +9,7 @@
     </SchemaVersion>
     <ProjectGuid>{6696D97A-08D1-4322-BFFA-C0274D08A595}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Common_vb</RootNamespace>
+    <RootNamespace>MyVb</RootNamespace>
     <AssemblyName>Common_vb</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
@@ -67,6 +67,7 @@
     <Compile Include="Collections\Generic\LookupTable.vb" />
     <Compile Include="Collections\CountingDictionary.vb" />
     <Compile Include="Collections\Generic\CountingDictionary.vb" />
+    <Compile Include="Extensions\BitArrayExtensions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

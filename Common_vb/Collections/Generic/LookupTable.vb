@@ -1,6 +1,6 @@
 ﻿Imports System.Collections.Generic
 
-Namespace My.Collections.Generic
+Namespace Collections.Generic
 
     Public Class LookupTable(Of T)
 

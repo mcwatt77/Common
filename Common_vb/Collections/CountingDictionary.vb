@@ -1,7 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports System.IO
 
-Namespace My.Collections
+Namespace Collections
 
     Public Class CountingDictionary
 
@@ -50,6 +50,7 @@ Namespace My.Collections
             Else
                 If AllowNewKeys Then
                     node = New Node(1)
+                    node.Generation = Generation + 1
                     _innerDict.Add(key, node)
                     result = True
                 End If
@@ -96,7 +97,7 @@ Namespace My.Collections
                             Dim node = New Node(field(1))
                             If field.Length = 3 Then
                                 node.Generation = field(2)
-                                Generation = Math.Max(Generation, node.Generation + 1)
+                                Generation = Math.Max(Generation, node.Generation)
                             End If
                             _innerDict.Add(field(0), node)
                         End If

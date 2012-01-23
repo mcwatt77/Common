@@ -1,7 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports System.IO
 
-Namespace My.Collections.Generic
+Namespace Collections.Generic
 
     Public Class CountingDictionary(Of T)
 
