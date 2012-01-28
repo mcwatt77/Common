@@ -68,6 +68,8 @@
     <Compile Include="Collections\CountingDictionary.vb" />
     <Compile Include="Collections\Generic\CountingDictionary.vb" />
     <Compile Include="Extensions\BitArrayExtensions.vb" />
+    <Compile Include="Extensions\DateExtensions.vb" />
+    <Compile Include="Extensions\StringExtensions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -84,7 +86,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Collections\Generic\Node.vb" />
-    <Compile Include="Collections\StringNode.vb" />
+    <Compile Include="Collections\Node.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
