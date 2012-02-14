@@ -29,10 +29,16 @@ Public Module BitArrayExtensions
         Return result
     End Function
 
+    ''' <summary>
+    ''' Set the bits in the given bit array according to the encoded string value.
+    ''' </summary>
+    ''' <param name="this"></param>
+    ''' <param name="encoded"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Extension()>
     Public Function RLDecode(ByVal this As BitArray, ByVal encoded As String) As BitArray
-        Dim result = New BitArray(this.Length)
-        If String.IsNullOrEmpty(encoded) Then Return result
+        If String.IsNullOrEmpty(encoded) Then Return this
 
         Dim chars As Char() = encoded.ToCharArray
         Dim runStart = 0
@@ -48,12 +54,12 @@ Public Module BitArrayExtensions
                     Dim nibble As Byte
                     For i = runStart To charPos - 1
                         nibble = Byte.Parse(chars(i), System.Globalization.NumberStyles.HexNumber)
-                        result.SetNibble(bitPos, nibble)
+                        this.SetNibble(bitPos, nibble)
                         bitPos += 4
                     Next
                 Else
                     Dim runCount As Integer = DecodeRunValue(currentClass, chars, runStart, runLength)
-                    result.SetRun(bitPos, currentClass = CharClass.OneRun, runCount)
+                    this.SetRun(bitPos, currentClass = CharClass.OneRun, runCount)
                     bitPos += runCount
                 End If
                 ' Start a new run
@@ -62,24 +68,24 @@ Public Module BitArrayExtensions
             End If
             charPos += 1
         End While
-        If runStart < this.Length Then
-            ' Hit the end of the array while still in a run.
+        If runStart < chars.Length Then
+            ' Hit the end of the string while still in a run.
             If currentClass = CharClass.HexDigit Then
                 Dim nibble As Byte
                 For i = runStart To chars.Length - 1
                     nibble = Byte.Parse(chars(i), System.Globalization.NumberStyles.HexNumber)
-                    result.SetNibble(bitPos, nibble)
+                    this.SetNibble(bitPos, nibble)
                     bitPos += 4
                 Next
             Else
                 Dim runLength = chars.Length - runStart
                 Dim runCount As Integer = DecodeRunValue(currentClass, chars, runStart, runLength)
-                result.SetRun(bitPos, currentClass = CharClass.OneRun, runCount)
+                this.SetRun(bitPos, currentClass = CharClass.OneRun, runCount)
                 bitPos += runCount
             End If
         End If
 
-        Return result
+        Return this
     End Function
 
     Private Enum CharClass
@@ -119,6 +125,15 @@ Public Module BitArrayExtensions
         Return result.ToString()
     End Function
 
+    ''' <summary>
+    ''' Computes the integer value of a number encoded as hex value using the digits g..V or G..V.
+    ''' </summary>
+    ''' <param name="charClass"></param>
+    ''' <param name="chars"></param>
+    ''' <param name="runStart"></param>
+    ''' <param name="runLength"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Function DecodeRunValue(ByVal charClass As CharClass, ByVal chars As Char(),
                                     ByVal runStart As Integer, ByVal runLength As Integer) As Integer
         Dim result As Integer = 0
@@ -129,6 +144,13 @@ Public Module BitArrayExtensions
         Return result
     End Function
 
+    ''' <summary>
+    ''' Returns the value of the nibble (4 bits) starting at the specified index.
+    ''' </summary>
+    ''' <param name="this"></param>
+    ''' <param name="index"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     <Extension()>
     Public Function Nibble(ByVal this As BitArray, ByVal index As Integer) As Byte
         Dim result As Byte = 0
@@ -141,6 +163,13 @@ Public Module BitArrayExtensions
         Return result
     End Function
 
+    ''' <summary>
+    ''' Sets 4 bits starting at index, based of the low-order bits of the given byte value.
+    ''' </summary>
+    ''' <param name="this"></param>
+    ''' <param name="index"></param>
+    ''' <param name="nibble"></param>
+    ''' <remarks></remarks>
     <Extension()>
     Public Sub SetNibble(ByVal this As BitArray, ByVal index As Integer, ByVal nibble As Byte)
         Dim offset As Integer = 0

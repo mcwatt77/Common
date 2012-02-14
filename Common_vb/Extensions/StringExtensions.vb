@@ -25,7 +25,7 @@ Module StringExtensions
     ''' The elision occurs at start the start of the string.
     ''' </summary>
     ''' <param name="this">The string to elide.</param>
-    ''' <param name="len">The desired length of the elided string (including the ...)</param>
+    ''' <param name="len">The desired length of the elided string (not including the ...)</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
     <Extension()>
@@ -38,10 +38,9 @@ Module StringExtensions
     ''' The elision occurs at end the start of the string.
     ''' </summary>
     ''' <param name="this">The string to elide.</param>
-    ''' <param name="len">The desired length of the elided string (including the ...)</param>
+    ''' <param name="len">The desired length of the elided string (not including the ...)</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-
     <Extension()>
     Public Function ElideRight(ByVal this As String, ByVal Len As Integer) As String
         Return this.Elide(Len, 0)
@@ -52,7 +51,7 @@ Module StringExtensions
     ''' </summary>
     ''' <param name="this">The string to elide.</param>
     ''' <param name="left">The number of characters to take from the start of the string.</param>
-    ''' <param name="right">The number of characters to take from the left of the string.</param>
+    ''' <param name="right">The number of characters to take from the end of the string.</param>
     ''' <returns></returns>
     ''' <remarks>If left + right is greater than this.Length, the original string is returned.</remarks>
     <Extension()>
